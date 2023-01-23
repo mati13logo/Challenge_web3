@@ -2,10 +2,7 @@ import React from 'react'
 import logo from '../../assets/react.svg'
 import './navbar.css';
 
-
 const Navbar = ({ isConnected, onConnect, onDisconnect }) => {
-  // console.log(isConnected)
-  // console.log(onConnect)
 
   return (
     <div>

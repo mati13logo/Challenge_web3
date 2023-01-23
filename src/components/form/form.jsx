@@ -23,8 +23,6 @@ const form = () => {
     };
     const name = watch('nombre')
     const description = watch('descripcion')
-    console.log(name)
-    console.log(description)
     const handleChange = () => {
         if(name && description && image){
             dispatch(claudinaryPost(image))

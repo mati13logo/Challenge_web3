@@ -7,11 +7,11 @@ import Form from './components/form/form.jsx'
 import NftComponent from './components/NftComponent'
 import { useReducer } from 'react';
 import { reducer } from './redux/reducer'
+import {Reset} from './redux/actions.js'
+import { useDispatch } from 'react-redux'
 
 function App() {
-
-  const [{ NFT }, dispatch] = useReducer(reducer, {})
-
+  const dispatch = useDispatch()
   const [isConnected, setIsConnected] = useState(false)
   const [ethBalance, setEthBalance] = useState('')
   const detectCurrentProvider = () => {
@@ -46,6 +46,7 @@ function App() {
   }
   const onDisconnect = () => {
     setIsConnected(false)
+    dispatch(Reset())
   }
 
   return (

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -7,14 +7,9 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Paper } from '@mui/material';
 
 
@@ -32,7 +27,6 @@ import { Paper } from '@mui/material';
   const NFT =  () => {
     const nft = useSelector((state)=> state.nft)
     const nftImg = useSelector((state)=> state.nftImg)
-// console.log(nft)
     const [expanded, setExpanded] = React.useState(false);
     const handleExpandClick = () => {
       setExpanded(!expanded);
@@ -42,16 +36,6 @@ import { Paper } from '@mui/material';
     {nftImg && Object.keys(nft).length > 0?
       <Card sx={{ maxWidth: 345 }}>
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            0
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
         title={nft.metadata.name}
         subheader="nft creado en el formulario"
       />
@@ -67,20 +51,19 @@ import { Paper } from '@mui/material';
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
+        {
+              nft.attributes[0].trait_type ? 
+              <ExpandMore
+                expand={expanded}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+              >
           <ExpandMoreIcon />
-        </ExpandMore>
+          </ExpandMore>
+                : null
+
+        }
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>

@@ -14,6 +14,11 @@ export function reducer(state= initialState, action){
                 ...state,
                 nftImg:action.payload
             }
+        case 'RESET':
+            return{
+                nft:{},
+                nftImg:{}
+            }
             default: return state  
     }
 

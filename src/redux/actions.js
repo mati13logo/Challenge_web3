@@ -1,9 +1,5 @@
 
 export function PostNFT(payload) {
-    // if (!payload.nombre) {
-    //     alert('Error en minteo ' + ' Informacion incompleta')
-    //     return {
-            console.log(payload)
     if(payload.nombre && payload.image && payload.descripcion){
         return {
             type: 'POST_NFT',
@@ -55,17 +51,10 @@ export function claudinaryPost(payload) {
             })
     }
 
+}
 
-
-    // const respuesta = fetch("https://api.cloudinary.com/v1_1/dhedsktxa/image/upload", {
-    //     method: "post",
-    //     body: data
-    // })
-    // // .then((data) => console.log(data))
-    // // .catch((err)=> console.log(err))
-    // // console.log(respuesta.url)
-    // return {
-    //     type: 'CLAUDINARY_POST',
-    //     payload: respuesta.url
-    // }
+export function Reset(){
+    return{
+        type:"RESET",
+    }
 }
